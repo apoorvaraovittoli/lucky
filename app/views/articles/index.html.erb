@@ -1,0 +1,33 @@
+
+<div class="container">
+  <div class="row">
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>Uploded Document</th>
+    <th></th>
+        <th></th>
+            <th></th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.name %></td>
+      <td><%= article.age %></td>
+      <td><%= article.gender %></td>
+      <td><%= link_to "Download", article.avatar_url, :target => "blank" %></td>
+      <td><%= link_to 'Show', article_path(article) %></td>
+      <td><%= link_to 'Edit', edit_article_path(article) %></td>
+       <td><%= link_to 'Delete', article_path(article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+
+       </tr>
+  <% end %>
+</table>
+<%= will_paginate @articles %>
+<%= link_to 'new', new_article_path %>
+</div>
+</div>
